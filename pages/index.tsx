@@ -16,8 +16,7 @@ export const Wrapper = styled(Box)`
   position: relative;
   height: 100vh;
   background-color: #2097fa;
-  padding: 0;
-  margin: 0;
+  padding: 1rem 0;
 `;
 
 export default function Home() {
