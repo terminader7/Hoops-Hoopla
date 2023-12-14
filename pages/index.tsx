@@ -4,6 +4,7 @@ import { Box, Typography, styled } from "@mui/material";
 import InlineContainer from "../components/InlineContainer";
 import { green } from "@mui/material/colors";
 import { Global } from "@emotion/react";
+import Link from "../components/Link";
 
 export const Wrapper = styled(Box)`
   display: flex;
@@ -47,9 +48,15 @@ export default function Home() {
           <InlineContainer
             sx={{ minWidth: "100px", backgroundColor: "#FA8320" }}
           >
-            <Typography variant="h6" fontWeight={600}>
-              Hello
-            </Typography>
+            <Box>
+              <Link
+                variant="body1"
+                href="/"
+                sx={{ fontWeight: 600, color: "black" }}
+              >
+                Home
+              </Link>
+            </Box>
           </InlineContainer>
         </Box>
       </Wrapper>
