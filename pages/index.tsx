@@ -5,7 +5,7 @@ import InlineContainer from "../components/InlineContainer";
 import { green } from "@mui/material/colors";
 import { Global } from "@emotion/react";
 import Link from "../components/Link";
-import NavItem from "../components/NavItem";
+import { NavItem } from "../features/layout/components/Navigation";
 
 // Provide top 5 leaders in each statistical category, clicking on cat name will take player to players page with filter preselected
 
