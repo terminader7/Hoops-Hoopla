@@ -9,7 +9,8 @@ import { NavItem } from "../features/layout/components/Navigation";
 
 // Provide top 5 leaders in each statistical category, clicking on cat name will take player to players page with filter preselected
 
-export const Wrapper = styled(Box)`
+export const Wrapper = styled(Box)(
+  ({ theme }) => `
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +18,8 @@ export const Wrapper = styled(Box)`
   height: 100vh;
   background-color: #2097fa;
   padding: 1rem 0;
-`;
+`
+);
 
 export default function Home() {
   return (
@@ -44,9 +46,11 @@ export default function Home() {
             width: "75%",
           }}
         >
-          <Typography variant="h2" fontWeight={600}>
-            Welcome to Hoops Hoopla!
-          </Typography>
+          <Box sx={{ padding: "1rem" }}>
+            <Typography variant="h4" fontWeight={600}>
+              Hoops Hoopla
+            </Typography>
+          </Box>
           <InlineContainer
             sx={{ minWidth: "100px", backgroundColor: "#FA8320" }}
           >

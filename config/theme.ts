@@ -22,7 +22,7 @@ export const getColorOptions = (mode: "light" | "dark"): PaletteOptions => {
       main: "#FA8320",
     },
     secondary: {
-      main: "#5DC268",
+      main: "#2097fa",
     },
     tertiary: {
       main: "#002F95",
@@ -32,9 +32,6 @@ export const getColorOptions = (mode: "light" | "dark"): PaletteOptions => {
     },
     warning: {
       main: "#ED6C02",
-    },
-    info: {
-      main: "#355CF4",
     },
     text: {
       primary: "rgba(0, 0, 0, 0.87)",
@@ -151,3 +148,5 @@ export const getThemeOptions = (
     borderRadius: 10,
   },
 });
+
+export default getThemeOptions;

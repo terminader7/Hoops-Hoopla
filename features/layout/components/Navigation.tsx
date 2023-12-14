@@ -7,7 +7,7 @@ const NavItemContainer = styled(Box)(
 	padding: .5rem 1rem;
 	&:hover {
     cursor: pointer;
-		background: ${theme.palette.primary.dark};
+		background: green;
 		color: ${theme.palette.common.white};
 	}
 `
