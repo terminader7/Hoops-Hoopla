@@ -33,11 +33,6 @@ export const getColorOptions = (mode: "light" | "dark"): PaletteOptions => {
     warning: {
       main: "#ED6C02",
     },
-    text: {
-      primary: "rgba(0, 0, 0, 0.87)",
-      secondary: "rgba(0, 0, 0, 0.6)",
-      disabled: "rgba(0, 0, 0, 0.38)",
-    },
     background: {},
     divider: "rgba(0, 0, 0, 0.12)",
   };

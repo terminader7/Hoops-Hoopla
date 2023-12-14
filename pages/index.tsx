@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Box, Typography, styled } from "@mui/material";
+import { Box, Typography, styled, useTheme } from "@mui/material";
 import InlineContainer from "../components/InlineContainer";
 import { green } from "@mui/material/colors";
 import { Global } from "@emotion/react";
@@ -9,19 +9,20 @@ import { NavItem } from "../features/layout/components/Navigation";
 
 // Provide top 5 leaders in each statistical category, clicking on cat name will take player to players page with filter preselected
 
-export const Wrapper = styled(Box)(
+const Wrapper = styled(Box)(
   ({ theme }) => `
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   height: 100vh;
-  background-color: #2097fa;
+  background-color: ${theme.palette.secondary.main};
   padding: 1rem 0;
 `
 );
 
-export default function Home() {
+const Homepage = () => {
+  const theme = useTheme();
   return (
     <>
       <Global
@@ -41,7 +42,7 @@ export default function Home() {
           sx={{
             display: "flex",
             height: "100vh",
-            backgroundColor: "white",
+            backgroundColor: "common.white",
             flexDirection: "column",
             width: "75%",
           }}
@@ -52,7 +53,10 @@ export default function Home() {
             </Typography>
           </Box>
           <InlineContainer
-            sx={{ minWidth: "100px", backgroundColor: "#FA8320" }}
+            sx={{
+              minWidth: "100px",
+              backgroundColor: theme.palette.primary.main,
+            }}
           >
             <NavItem text="Stats Home" href={"/"} />
             <NavItem text="Players" href={"/"} />
@@ -64,4 +68,6 @@ export default function Home() {
       </Wrapper>
     </>
   );
-}
+};
+
+export default Homepage;
