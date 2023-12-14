@@ -5,6 +5,9 @@ import InlineContainer from "../components/InlineContainer";
 import { green } from "@mui/material/colors";
 import { Global } from "@emotion/react";
 import Link from "../components/Link";
+import NavItem from "../components/NavItem";
+
+// Provide top 5 leaders in each statistical category, clicking on cat name will take player to players page with filter preselected
 
 export const Wrapper = styled(Box)`
   display: flex;
@@ -12,7 +15,7 @@ export const Wrapper = styled(Box)`
   align-items: center;
   position: relative;
   height: 100vh;
-  background-color: black;
+  background-color: #2097fa;
   padding: 0;
   margin: 0;
 `;
@@ -48,15 +51,11 @@ export default function Home() {
           <InlineContainer
             sx={{ minWidth: "100px", backgroundColor: "#FA8320" }}
           >
-            <Box>
-              <Link
-                variant="body1"
-                href="/"
-                sx={{ fontWeight: 600, color: "black" }}
-              >
-                Home
-              </Link>
-            </Box>
+            <NavItem text="Stats Home" href={"/"} />
+            <NavItem text="Players" href={"/"} />
+            <NavItem text="Teams" href={"/"} />
+            <NavItem text="Leaders" href={"/"} />
+            <NavItem text="Compare" href={"/"} />
           </InlineContainer>
         </Box>
       </Wrapper>
