@@ -19,10 +19,14 @@ export const breakpoints: { values: Breakpoints["values"] } = {
 export const getColorOptions = (mode: "light" | "dark"): PaletteOptions => {
   const light = {
     primary: {
+      light: "#FB9B4C",
       main: "#FA8320",
+      dark: "#C86819",
     },
     secondary: {
+      light: "#4CABFB",
       main: "#2097fa",
+      dark: "#1978C8",
     },
     tertiary: {
       main: "#002F95",
