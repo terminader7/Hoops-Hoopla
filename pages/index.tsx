@@ -5,7 +5,7 @@ import InlineContainer from "../components/InlineContainer";
 import { green } from "@mui/material/colors";
 import { Global } from "@emotion/react";
 import Link from "../components/Link";
-import { NavItem } from "../features/layout/components/Navigation";
+import { NavBar, NavItem } from "../features/layout/components/Navigation";
 import { useMemo } from "react";
 import getThemeOptions from "../config/theme";
 
@@ -56,19 +56,7 @@ const Homepage = () => {
               Hoops Hoopla
             </Typography>
           </Box>
-          <InlineContainer
-            sx={{
-              minWidth: "100px",
-              backgroundColor: theme.palette.primary.main,
-            }}
-          >
-            <NavItem text="Stats Home" href={"/"} />
-            <NavItem text="Players" href={"/players"} />
-            <NavItem text="Teams" href={"/teams"} />
-            <NavItem text="Leaders" href={"/leaders"} />
-            <NavItem text="Compare" href={"/compare"} />
-            <NavItem text="Settings" href={"/settings"} />
-          </InlineContainer>
+          <NavBar />
         </Box>
       </Wrapper>
     </>

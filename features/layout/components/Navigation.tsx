@@ -3,6 +3,16 @@ import { useRouter } from "next/router";
 import InlineContainer from "../../../components/InlineContainer";
 import { useTheme } from "@mui/material/styles";
 
+const NavBarContainer = styled(InlineContainer)(
+  ({ theme }) => `
+  min-width: 100px; 
+  justify-content: space-between;
+  background-color: ${theme.palette.primary.main};
+  border-bottom: 3px solid;
+  border-color: ${theme.palette.primary.dark};
+`
+);
+
 const NavItemContainer = styled(Box)(
   ({ theme }) => `
 	padding: .5rem 1rem;
@@ -31,8 +41,18 @@ export const NavItem = ({ text, href }) => {
 export const NavBar = () => {
   const theme = useTheme();
   return (
-    <InlineContainer
-      sx={{ minWidth: "100px", backgroundColor: theme.palette.primary.main }}
-    ></InlineContainer>
+    <NavBarContainer>
+      <InlineContainer>
+        <NavItem text="Stats Home" href={"/"} />
+        <NavItem text="Players" href={"/players"} />
+        <NavItem text="Teams" href={"/teams"} />
+        <NavItem text="Leaders" href={"/leaders"} />
+        <NavItem text="Compare" href={"/compare"} />
+      </InlineContainer>
+      <InlineContainer>
+        <NavItem text="Settings" href={"/settings"} />
+        <NavItem text="Sign Up" href={"/signup"} />
+      </InlineContainer>
+    </NavBarContainer>
   );
 };
