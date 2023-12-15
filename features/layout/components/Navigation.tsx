@@ -10,6 +10,7 @@ const NavBarContainer = styled(InlineContainer)(
   background-color: ${theme.palette.primary.main};
   border-bottom: 3px solid;
   border-color: ${theme.palette.primary.dark};
+
 `
 );
 
