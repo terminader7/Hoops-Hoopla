@@ -63,10 +63,11 @@ const Homepage = () => {
             }}
           >
             <NavItem text="Stats Home" href={"/"} />
-            <NavItem text="Players" href={"/"} />
-            <NavItem text="Teams" href={"/"} />
-            <NavItem text="Leaders" href={"/"} />
-            <NavItem text="Compare" href={"/"} />
+            <NavItem text="Players" href={"/players"} />
+            <NavItem text="Teams" href={"/teams"} />
+            <NavItem text="Leaders" href={"/leaders"} />
+            <NavItem text="Compare" href={"/compare"} />
+            <NavItem text="Settings" href={"/settings"} />
           </InlineContainer>
         </Box>
       </Wrapper>
