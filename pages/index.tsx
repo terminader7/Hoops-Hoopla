@@ -1,11 +1,13 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Box, Typography, styled, useTheme } from "@mui/material";
+import { Box, Typography, createTheme, styled, useTheme } from "@mui/material";
 import InlineContainer from "../components/InlineContainer";
 import { green } from "@mui/material/colors";
 import { Global } from "@emotion/react";
 import Link from "../components/Link";
 import { NavItem } from "../features/layout/components/Navigation";
+import { useMemo } from "react";
+import getThemeOptions from "../config/theme";
 
 // Provide top 5 leaders in each statistical category, clicking on cat name will take player to players page with filter preselected
 
@@ -45,6 +47,8 @@ const Homepage = () => {
             backgroundColor: "common.white",
             flexDirection: "column",
             width: "75%",
+            boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",
+            borderRadius: "5px",
           }}
         >
           <Box sx={{ padding: "1rem" }}>
@@ -71,3 +75,6 @@ const Homepage = () => {
 };
 
 export default Homepage;
+function getPreferredTheme(): import("@mui/material").PaletteMode {
+  throw new Error("Function not implemented.");
+}

@@ -72,6 +72,10 @@ export const getThemeOptions = (
         }
       : {}),
   },
+  typography: {
+    fontFamily: "Avenir, sans-serif",
+    fontSize: 14,
+  },
   components: {
     MuiLink: {
       styleOverrides: {
