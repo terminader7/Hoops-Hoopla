@@ -72,54 +72,6 @@ export const getThemeOptions = (
         }
       : {}),
   },
-  typography: {
-    fontFamily: "Avenir, sans-serif",
-    fontSize: 16, // NOTE: default font-size of MUI is 14px
-    h1: {
-      fontFamily: "Avenir, sans-serif",
-      fontSize: 49,
-      fontWeight: 700,
-      lineHeight: "130%",
-    },
-    h2: {
-      fontFamily: "Avenir, sans-serif",
-      fontSize: 39,
-      fontWeight: 700,
-      lineHeight: "130%",
-    },
-    h3: {
-      fontFamily: "Avenir, sans-serif",
-      fontSize: 31,
-      fontWeight: 700,
-      lineHeight: "150%",
-    },
-    h4: {
-      fontFamily: "Avenir, sans-serif",
-      fontSize: 25,
-      fontWeight: 700,
-      lineHeight: "150%",
-    },
-    h5: {
-      fontFamily: "Avenir, sans-serif",
-      fontSize: 20,
-      fontWeight: 600,
-      lineHeight: "150%",
-    },
-    h6: {
-      fontFamily: "Avenir, sans-serif",
-      fontSize: 18,
-      fontWeight: 600,
-      lineHeight: "150%",
-    },
-    body1: {
-      fontFamily: "Avenir, sans-serif",
-      fontSize: 16,
-    },
-    body2: {
-      fontFamily: "Avenir, sans-serif",
-      fontSize: 14,
-    },
-  },
   components: {
     MuiLink: {
       styleOverrides: {
