@@ -19,9 +19,9 @@ const NavItemContainer = styled(Box)(
 	padding: .5rem 1rem;
 	&:hover {
     cursor: pointer;
-		background: ${theme.palette.secondary.main};
+		background: ${theme.palette.primary.dark};
 		color: ${theme.palette.common.white};
-    transition: all .2s ease-in-out;
+    transition: all .3s ease-in-out;
 	}
 `
 );
@@ -34,7 +34,9 @@ export const NavItem = ({ text, href }) => {
         router.push(href);
       }}
     >
-      <Typography variant="body1">{text}</Typography>
+      <Typography variant="body2" fontWeight={600}>
+        {text}
+      </Typography>
     </NavItemContainer>
   );
 };

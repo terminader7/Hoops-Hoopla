@@ -37,7 +37,6 @@ export const getColorOptions = (mode: "light" | "dark"): PaletteOptions => {
     warning: {
       main: "#ED6C02",
     },
-    background: {},
     divider: "rgba(0, 0, 0, 0.12)",
   };
 

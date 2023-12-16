@@ -6,6 +6,7 @@ import {
   Typography,
   createTheme,
   styled,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import InlineContainer from "../components/InlineContainer";
@@ -16,6 +17,8 @@ import { NavBar, NavItem } from "../features/layout/components/Navigation";
 import { useMemo } from "react";
 import getThemeOptions from "../config/theme";
 import BasketballIcon from "@mui/icons-material/SportsBasketball";
+import MenuIcon from "@mui/icons-material/MenuRounded";
+import GlobalSearch from "../features/layout/components/GlobalSearch";
 
 // Provide top 5 leaders in each statistical category, clicking on cat name will take player to players page with filter preselected
 
@@ -26,9 +29,9 @@ const Wrapper = styled(Box)(
   align-items: center;
   position: relative;
   height: 100vh;
-  background-color: ${theme.palette.secondary.main};
+  background-color: ${theme.palette.secondary.dark};
   padding: 1rem 0;
-`
+  overflow: hidden;`
 );
 
 const HomePageContainer = styled(Box)(
@@ -45,6 +48,8 @@ const HomePageContainer = styled(Box)(
 
 const Homepage = () => {
   const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
+
   return (
     <>
       <Global
@@ -65,27 +70,33 @@ const Homepage = () => {
             sx={{
               padding: "1rem",
               justifyContent: "space-between",
-              flexDirection: { xs: "column", md: "row" },
+              gap: "1rem",
+              alignItems: "center",
             }}
           >
-            <InlineContainer gap=".5rem">
-              <BasketballIcon fontSize="large" sx={{ color: "primary.main" }} />
-              <Typography variant="h4" fontWeight={600}>
+            <InlineContainer gap=".25rem">
+              <BasketballIcon
+                fontSize={isDesktop ? "large" : "small"}
+                sx={{
+                  color: "primary.main",
+                }}
+              />
+              <Typography variant={isDesktop ? "h4" : "h6"} fontWeight={600}>
                 Hoops Hoopla
               </Typography>
             </InlineContainer>
-            <TextField
-              label="Search"
-              variant="outlined"
-              size="medium"
-              color="primary"
-              sx={{
-                width: { xs: "80%", md: "30%" },
-                marginRight: { xs: "0", md: "3rem" },
-              }}
-            />
+            {isDesktop ? (
+              <GlobalSearch />
+            ) : (
+              <InlineContainer>
+                <MenuIcon sx={{ fontSize: "large" }} />
+                <Typography variant="body1" fontWeight={600}>
+                  MENU
+                </Typography>
+              </InlineContainer>
+            )}
           </InlineContainer>
-          <NavBar />
+          {isDesktop && <NavBar />}
         </HomePageContainer>
       </Wrapper>
     </>
