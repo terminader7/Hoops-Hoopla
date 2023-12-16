@@ -15,6 +15,7 @@ import Link from "../components/Link";
 import { NavBar, NavItem } from "../features/layout/components/Navigation";
 import { useMemo } from "react";
 import getThemeOptions from "../config/theme";
+import BasketballIcon from "@mui/icons-material/SportsBasketball";
 
 // Provide top 5 leaders in each statistical category, clicking on cat name will take player to players page with filter preselected
 
@@ -67,9 +68,12 @@ const Homepage = () => {
               flexDirection: { xs: "column", md: "row" },
             }}
           >
-            <Typography variant="h4" fontWeight={600}>
-              Hoops Hoopla
-            </Typography>
+            <InlineContainer gap=".5rem">
+              <BasketballIcon fontSize="large" sx={{ color: "primary.main" }} />
+              <Typography variant="h4" fontWeight={600}>
+                Hoops Hoopla
+              </Typography>
+            </InlineContainer>
             <TextField
               label="Search"
               variant="outlined"
