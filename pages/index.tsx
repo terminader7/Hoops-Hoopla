@@ -1,6 +1,7 @@
 import Head from "next/head";
 import {
   Box,
+  Grid,
   TextField,
   Typography,
   createTheme,
@@ -70,6 +71,18 @@ const Homepage = () => {
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const [showPerGame, setShowPerGame] = useState(true);
 
+  const top5StatLeadersGridItems = [
+    "Points Per Game",
+    "Assists Per Game",
+    "Rebounds Per Game",
+    "Steals Per Game",
+    "Blocks Per Game",
+    "Field Goal %",
+    "3PM Per Game",
+    "Three Point %",
+    "Minutes Per Game",
+  ];
+
   return (
     <>
       <Head>
@@ -120,10 +133,16 @@ const Homepage = () => {
             )}
           </InlineContainer>
           {isDesktop && <NavBar />}
-          <Box display="flex" justifyContent="flex-start" paddingLeft="2rem">
+          <Box
+            display="flex"
+            justifyContent="flex-start"
+            paddingLeft="2rem"
+            flexDirection="column"
+            width="50%"
+          >
             <InlineContainer
               sx={{
-                width: "50%",
+                width: "100%",
                 paddingTop: "1rem",
                 alignItems: "center",
                 justifyContent: "center",
@@ -151,6 +170,30 @@ const Homepage = () => {
                 </Typography>
               </Top5FilterContainer>
             </InlineContainer>
+            <Grid
+              container
+              spacing={2}
+              sx={{
+                marginTop: "2rem",
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {top5StatLeadersGridItems.map((item) => (
+                <Grid item md={4}>
+                  <Typography
+                    variant="body1"
+                    fontWeight={600}
+                    overflow="visible"
+                    textAlign="center"
+                    noWrap
+                  >
+                    {item}
+                  </Typography>
+                </Grid>
+              ))}
+            </Grid>
           </Box>
         </HomePageContainer>
       </Wrapper>
