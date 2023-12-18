@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import {
   Box,
   TextField,
@@ -14,7 +13,7 @@ import { green } from "@mui/material/colors";
 import { Global } from "@emotion/react";
 import Link from "../components/Link";
 import { NavBar, NavItem } from "../features/layout/components/Navigation";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import getThemeOptions from "../config/theme";
 import BasketballIcon from "@mui/icons-material/SportsBasketball";
 import MenuIcon from "@mui/icons-material/MenuRounded";
@@ -29,7 +28,7 @@ const Wrapper = styled(Box)(
   align-items: center;
   position: relative;
   height: 100vh;
-  background-color: ${theme.palette.secondary.dark};
+  background-color: ${theme.palette.background.default};
   padding: 1rem 0;
   overflow: hidden;`
 );
@@ -46,12 +45,36 @@ const HomePageContainer = styled(Box)(
 `
 );
 
+const Top5FilterContainer = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "active",
+})<{ active?: boolean }>(
+  ({ theme, active }) => `
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0 1rem;
+  width: 50%;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  background-color: ${
+    active ? theme.palette.common.black : theme.palette.common.white
+  };
+  color: ${active ? theme.palette.common.white : theme.palette.common.black};
+
+  `
+);
+
 const Homepage = () => {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
+  const [showPerGame, setShowPerGame] = useState(true);
 
   return (
     <>
+      <Head>
+        <title>Home</title>
+      </Head>
       <Global
         styles={{
           body: {
@@ -97,6 +120,38 @@ const Homepage = () => {
             )}
           </InlineContainer>
           {isDesktop && <NavBar />}
+          <Box display="flex" justifyContent="flex-start" paddingLeft="2rem">
+            <InlineContainer
+              sx={{
+                width: "50%",
+                paddingTop: "1rem",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "2rem",
+              }}
+            >
+              <Top5FilterContainer
+                onClick={() => {
+                  setShowPerGame(true);
+                }}
+                active={showPerGame}
+              >
+                <Typography variant="body1" fontWeight={600}>
+                  Per Game
+                </Typography>
+              </Top5FilterContainer>
+              <Top5FilterContainer
+                onClick={() => {
+                  setShowPerGame(false);
+                }}
+                active={!showPerGame}
+              >
+                <Typography variant="body1" fontWeight={600}>
+                  Totals
+                </Typography>
+              </Top5FilterContainer>
+            </InlineContainer>
+          </Box>
         </HomePageContainer>
       </Wrapper>
     </>

@@ -37,6 +37,12 @@ export const getColorOptions = (mode: "light" | "dark"): PaletteOptions => {
     warning: {
       main: "#ED6C02",
     },
+    background: {
+      // This is more of a standard grey
+      // default: "#3F598E",
+      default: "#4F7390",
+      paper: "#FFFFFF",
+    },
     divider: "rgba(0, 0, 0, 0.12)",
   };
 
