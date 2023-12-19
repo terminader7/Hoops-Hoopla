@@ -239,7 +239,7 @@ const Homepage = () => {
                   minWidth: "100%",
                 }}
               >
-                {top5TotalsGridItems.map((item) => statsGridItem(item))}
+                {top5PerGameGridItems.map((item) => statsGridItem(item))}
               </Grid>
             </Box>
           </InlineContainer>
