@@ -55,7 +55,7 @@ const Top5FilterContainer = styled(Box, {
   border: 1px solid black;
   border-radius: 5px;
   padding: 0 1rem;
-  width: 50%;
+  width: 100%;
   cursor: pointer;
   transition: all .2s ease-in-out;
   background-color: ${
@@ -71,7 +71,7 @@ const Homepage = () => {
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const [showPerGame, setShowPerGame] = useState(true);
 
-  const top5StatLeadersGridItems = [
+  const top5PerGameGridItems = [
     "Points Per Game",
     "Assists Per Game",
     "Rebounds Per Game",
@@ -82,6 +82,29 @@ const Homepage = () => {
     "Three Point %",
     "Minutes Per Game",
   ];
+
+  const top5TotalsGridItems = [
+    "Total Points",
+    "Total Assists",
+    "Total Rebounds",
+    "Total Steals",
+    "Total Blocks",
+    "Total 3 Pointers Made",
+  ];
+
+  const statsGridItem = (item) => (
+    <Grid item xs={12} md={4}>
+      <Typography
+        variant="body1"
+        fontWeight={600}
+        textAlign="center"
+        noWrap
+        overflow="visible"
+      >
+        {item}
+      </Typography>
+    </Grid>
+  );
 
   return (
     <>
@@ -133,68 +156,93 @@ const Homepage = () => {
             )}
           </InlineContainer>
           {isDesktop && <NavBar />}
-          <Box
-            display="flex"
-            justifyContent="flex-start"
-            paddingLeft="2rem"
-            flexDirection="column"
-            width="50%"
+          <InlineContainer
+            sx={{
+              justifyContent: "space-between",
+              alignItems: "center",
+              padding: "1rem 2rem",
+              flexDirection: { xs: "column", md: "row" },
+            }}
           >
-            <InlineContainer
-              sx={{
-                width: "100%",
-                paddingTop: "1rem",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "2rem",
-              }}
-            >
-              <Top5FilterContainer
-                onClick={() => {
-                  setShowPerGame(true);
+            <Box width="100%">
+              <InlineContainer
+                sx={{
+                  gap: "2rem",
                 }}
-                active={showPerGame}
               >
-                <Typography variant="body1" fontWeight={600}>
-                  Per Game
-                </Typography>
-              </Top5FilterContainer>
-              <Top5FilterContainer
-                onClick={() => {
-                  setShowPerGame(false);
-                }}
-                active={!showPerGame}
-              >
-                <Typography variant="body1" fontWeight={600}>
-                  Totals
-                </Typography>
-              </Top5FilterContainer>
-            </InlineContainer>
-            <Grid
-              container
-              spacing={2}
-              sx={{
-                marginTop: "2rem",
-                width: "100%",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {top5StatLeadersGridItems.map((item) => (
-                <Grid item md={4}>
-                  <Typography
-                    variant="body1"
-                    fontWeight={600}
-                    overflow="visible"
-                    textAlign="center"
-                    noWrap
-                  >
-                    {item}
+                <Top5FilterContainer
+                  onClick={() => {
+                    setShowPerGame(true);
+                  }}
+                  active={showPerGame}
+                >
+                  <Typography variant="body1" fontWeight={600} noWrap>
+                    Per Game
                   </Typography>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
+                </Top5FilterContainer>
+                <Top5FilterContainer
+                  onClick={() => {
+                    setShowPerGame(false);
+                  }}
+                  active={!showPerGame}
+                >
+                  <Typography variant="body1" fontWeight={600}>
+                    Totals
+                  </Typography>
+                </Top5FilterContainer>
+              </InlineContainer>
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  marginTop: "2rem",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {showPerGame
+                  ? top5PerGameGridItems.map((item) => statsGridItem(item))
+                  : top5TotalsGridItems.map((item) => statsGridItem(item))}
+              </Grid>
+            </Box>
+            <Box
+              width="100%"
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Box
+                sx={{
+                  border: "1px solid",
+                  borderColor: "black",
+                  borderRadius: "5px",
+                  padding: "0 1rem",
+                  width: "fit-content",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography variant="body1" fontWeight={600}>
+                  Standings
+                </Typography>
+              </Box>
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  marginTop: "2rem",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "100%",
+                  minWidth: "100%",
+                }}
+              >
+                {top5TotalsGridItems.map((item) => statsGridItem(item))}
+              </Grid>
+            </Box>
+          </InlineContainer>
         </HomePageContainer>
       </Wrapper>
     </>
