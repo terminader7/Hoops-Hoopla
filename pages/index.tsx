@@ -180,7 +180,7 @@ const Homepage = () => {
                   }}
                   active={showPerGame}
                 >
-                  <Typography variant="body1" fontWeight={600} noWrap>
+                  <Typography variant="h6" fontWeight={600} noWrap>
                     Per Game
                   </Typography>
                 </Top5FilterContainer>
@@ -190,7 +190,7 @@ const Homepage = () => {
                   }}
                   active={!showPerGame}
                 >
-                  <Typography variant="body1" fontWeight={600}>
+                  <Typography variant="h6" fontWeight={600}>
                     Totals
                   </Typography>
                 </Top5FilterContainer>
@@ -218,9 +218,6 @@ const Homepage = () => {
             >
               <Box
                 sx={{
-                  border: "1px solid",
-                  borderColor: "black",
-                  borderRadius: "5px",
                   padding: "0 1rem",
                   width: "fit-content",
                   display: "flex",
@@ -228,7 +225,7 @@ const Homepage = () => {
                   alignItems: "center",
                 }}
               >
-                <Typography variant="body1" fontWeight={600}>
+                <Typography variant="h6" fontWeight={600}>
                   Standings
                 </Typography>
               </Box>
@@ -243,7 +240,28 @@ const Homepage = () => {
                   minWidth: "100%",
                 }}
               >
-                {top5PerGameGridItems.map((item) => statsGridItem(item))}
+                <Grid item xs={12} md={4}>
+                  <Typography
+                    variant="body1"
+                    fontWeight={600}
+                    textAlign="center"
+                    noWrap
+                    overflow="visible"
+                  >
+                    Eastern Conference
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography
+                    variant="body1"
+                    fontWeight={600}
+                    textAlign="center"
+                    noWrap
+                    overflow="visible"
+                  >
+                    Western Conference
+                  </Typography>
+                </Grid>
               </Grid>
             </Box>
           </InlineContainer>
