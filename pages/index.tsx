@@ -110,6 +110,7 @@ const Homepage = () => {
     <>
       <Head>
         <title>Home</title>
+        <link rel="icon" href="/images/basketball-icon.svg" />
       </Head>
       <Global
         styles={{
