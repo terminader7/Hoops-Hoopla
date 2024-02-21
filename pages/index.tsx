@@ -84,12 +84,15 @@ const Homepage = () => {
   ];
 
   const top5TotalsGridItems = [
-    "Total Points",
-    "Total Assists",
-    "Total Rebounds",
-    "Total Steals",
-    "Total Blocks",
-    "Total 3 Pointers Made",
+    "Points",
+    "Assists",
+    "Rebounds",
+    "Steals",
+    "Blocks",
+    "3 Pointers Made",
+    "Minutes Played",
+    "Turnovers",
+    "Games Played",
   ];
 
   const statsGridItem = (item) => (
