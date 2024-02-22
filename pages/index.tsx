@@ -13,12 +13,12 @@ import InlineContainer from "../components/InlineContainer";
 import { green } from "@mui/material/colors";
 import { Global } from "@emotion/react";
 import Link from "../components/Link";
-import { NavBar, NavItem } from "../features/layout/components/Navigation";
+import { NavBar, NavItem } from "../features/Navigation";
 import { useMemo, useState } from "react";
 import getThemeOptions from "../config/theme";
 import BasketballIcon from "@mui/icons-material/SportsBasketball";
 import MenuIcon from "@mui/icons-material/MenuRounded";
-import GlobalSearch from "../features/layout/components/GlobalSearch";
+import GlobalSearch from "../features/GlobalSearch";
 
 // Provide top 5 leaders in each statistical category, clicking on cat name will take player to players page with filter preselected
 

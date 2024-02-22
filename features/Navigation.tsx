@@ -1,6 +1,6 @@
 import { Box, Typography, styled } from "@mui/material";
 import { useRouter } from "next/router";
-import InlineContainer from "../../../components/InlineContainer";
+import InlineContainer from "../components/InlineContainer";
 import { useTheme } from "@mui/material/styles";
 
 const NavBarContainer = styled(InlineContainer)(
