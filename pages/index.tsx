@@ -10,7 +10,6 @@ import {
   useTheme,
 } from "@mui/material";
 import InlineContainer from "../components/InlineContainer";
-import { green } from "@mui/material/colors";
 import { Global } from "@emotion/react";
 import Link from "../components/Link";
 import { NavBar, NavItem } from "../features/Navigation";
@@ -95,8 +94,8 @@ const Homepage = () => {
     "Games Played",
   ];
 
-  const statsGridItem = (item) => (
-    <Grid item xs={12} md={4}>
+  const statsGridItem = (item, index) => (
+    <Grid item xs={12} md={4} key={index}>
       <Typography
         variant="body1"
         fontWeight={600}
@@ -205,8 +204,12 @@ const Homepage = () => {
                 }}
               >
                 {showPerGame
-                  ? top5PerGameGridItems.map((item) => statsGridItem(item))
-                  : top5TotalsGridItems.map((item) => statsGridItem(item))}
+                  ? top5PerGameGridItems.map((item, index) =>
+                      statsGridItem(item, index)
+                    )
+                  : top5TotalsGridItems.map((item, index) =>
+                      statsGridItem(item, index)
+                    )}
               </Grid>
             </Box>
             <Box
