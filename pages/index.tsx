@@ -109,8 +109,8 @@ const Homepage = () => {
     </Grid>
   );
 
-  const teamDetails = fetchTeamDetails("Boston Celtics");
-  console.log({ teamDetails });
+  // const teamDetails = fetchTeamDetails("Boston Celtics");
+  // console.log({ teamDetails });
 
   return (
     <>
