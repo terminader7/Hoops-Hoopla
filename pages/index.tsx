@@ -18,6 +18,7 @@ import getThemeOptions from "../config/theme";
 import BasketballIcon from "@mui/icons-material/SportsBasketball";
 import MenuIcon from "@mui/icons-material/MenuRounded";
 import GlobalSearch from "../features/GlobalSearch";
+import { fetchTeamDetails } from "../features/queries";
 
 // Provide top 5 leaders in each statistical category, clicking on cat name will take player to players page with filter preselected
 
@@ -107,6 +108,9 @@ const Homepage = () => {
       </Typography>
     </Grid>
   );
+
+  const teamDetails = fetchTeamDetails("Boston Celtics");
+  console.log({ teamDetails });
 
   return (
     <>
