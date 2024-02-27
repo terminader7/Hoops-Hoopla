@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import nba from "nba-api-client";
+import { StatCat } from "../../features/types";
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,7 +13,7 @@ export default async function handler(
       Scope = "S",
       Season = "2022-23",
       SeasonType = "Regular+Season",
-      StatCategory = "PTS",
+      StatCategory = StatCat.PTS,
     } = req.query;
 
     const leagueLeaders = await nba.leagueLeaders({
