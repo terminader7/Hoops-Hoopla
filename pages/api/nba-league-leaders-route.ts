@@ -1,5 +1,3 @@
-// pages/api/nba-league-leaders.js
-
 import { NextApiRequest, NextApiResponse } from "next";
 import nba from "nba-api-client";
 

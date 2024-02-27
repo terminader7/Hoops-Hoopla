@@ -1,4 +1,5 @@
 import { routes } from "../../pages/api/routes";
+import { StatCategory } from "../types";
 
 export const fetchLeagueLeaders = async (
   LeagueID?: string,
@@ -6,11 +7,11 @@ export const fetchLeagueLeaders = async (
   Scope?: string,
   Season?: string,
   SeasonType?: string,
-  StatCategory?: string
+  StatCategory?: StatCategory
 ) => {
   try {
     const req = await fetch(
-      routes.league.leaders(
+      routes.players.leagueLeaders(
         LeagueID,
         PerMode,
         Scope,
