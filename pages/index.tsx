@@ -12,13 +12,13 @@ import {
 import InlineContainer from "../components/InlineContainer";
 import { Global } from "@emotion/react";
 import Link from "../components/Link";
-import { NavBar, NavItem } from "../features/Navigation";
+import { NavBar, NavItem } from "../features/layout/Navigation";
 import { useMemo, useState } from "react";
 import getThemeOptions from "../config/theme";
 import BasketballIcon from "@mui/icons-material/SportsBasketball";
 import MenuIcon from "@mui/icons-material/MenuRounded";
-import GlobalSearch from "../features/GlobalSearch";
-import { fetchTeamDetails } from "../features/queries";
+import GlobalSearch from "../features/layout/GlobalSearch";
+import { fetchLeagueLeaders } from "../features/league/league-queries";
 
 // Provide top 5 leaders in each statistical category, clicking on cat name will take player to players page with filter preselected
 
@@ -109,17 +109,9 @@ const Homepage = () => {
     </Grid>
   );
 
-  const teamDetails = fetchTeamDetails(1610612751);
-
-  fetchTeamDetails(1610612751)
-    .then((teamDetails) => {
-      console.log(teamDetails);
-    })
-    .catch((error) => {
-      console.error("Error fetching team details:", error);
-    });
-
-  console.log("teamDetails", teamDetails);
+  fetchLeagueLeaders().then((res) => {
+    console.log(res);
+  });
 
   return (
     <>
