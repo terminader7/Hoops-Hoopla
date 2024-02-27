@@ -109,8 +109,17 @@ const Homepage = () => {
     </Grid>
   );
 
-  // const teamDetails = fetchTeamDetails("Boston Celtics");
-  // console.log({ teamDetails });
+  const teamDetails = fetchTeamDetails(1610612751);
+
+  fetchTeamDetails(1610612751)
+    .then((teamDetails) => {
+      console.log(teamDetails);
+    })
+    .catch((error) => {
+      console.error("Error fetching team details:", error);
+    });
+
+  console.log("teamDetails", teamDetails);
 
   return (
     <>

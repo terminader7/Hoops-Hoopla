@@ -2,11 +2,9 @@ const express = require("express");
 const router = express.Router();
 const nba = require("nba-api-client");
 
-router.get("/team-details/:teamId", async (req, res) => {
+router.get("/:teamId", async (req, res) => {
   try {
-    const teamName = req.params.teamName;
-    const teamIdData = await nba.getTeamID(teamName);
-    const teamId = teamIdData.TeamID;
+    const teamId = req.params.teamId;
 
     const teamDetails = await nba.teamDetails({ TeamID: teamId });
     res.json(teamDetails);

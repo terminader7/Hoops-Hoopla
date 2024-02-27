@@ -1,23 +1,20 @@
-import nba from "nba-api-client";
-
 export const fetchTeamDetails = async (teamId: number) => {
   try {
-    const teamIdData = await nba.getTeamID(teamId);
-
-    const teamDetails = await nba.teamDetails({});
-    return teamDetails;
+    const req = await fetch(`/api/nba-team-details-route?teamId=${teamId}`);
+    const res = await req.json();
+    return res;
   } catch (error) {
     console.error("Error fetching team details:", error);
-    throw new Error("Failed to fetch team details");
+    return null;
   }
 };
 
-export const fetchTeams = async () => {
-  try {
-    const teams = await nba.getTeams();
-    return teams;
-  } catch (error) {
-    console.error("Error fetching teams:", error);
-    throw new Error("Failed to fetch teams");
-  }
-};
+// export const fetchTeams = async () => {
+//   try {
+//     const teams = await nba.getTeams();
+//     return teams;
+//   } catch (error) {
+//     console.error("Error fetching teams:", error);
+//     throw new Error("Failed to fetch teams");
+//   }
+// };
