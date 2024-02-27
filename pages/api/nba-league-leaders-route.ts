@@ -6,8 +6,14 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const { LeagueID, PerMode, Scope, Season, SeasonType, StatCategory } =
-      req.query;
+    const {
+      LeagueID = "00",
+      PerMode = "PerGame",
+      Scope = "S",
+      Season = "2022-23",
+      SeasonType = "Regular+Season",
+      StatCategory = "PTS",
+    } = req.query;
 
     const leagueLeaders = await nba.leagueLeaders({
       LeagueID,

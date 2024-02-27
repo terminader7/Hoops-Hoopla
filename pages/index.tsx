@@ -18,7 +18,7 @@ import getThemeOptions from "../config/theme";
 import BasketballIcon from "@mui/icons-material/SportsBasketball";
 import MenuIcon from "@mui/icons-material/MenuRounded";
 import GlobalSearch from "../features/layout/GlobalSearch";
-import { fetchLeagueLeaders } from "../features/league/league-queries";
+import { fetchLeagueLeaders } from "../features/players/player-queries";
 
 // Provide top 5 leaders in each statistical category, clicking on cat name will take player to players page with filter preselected
 
