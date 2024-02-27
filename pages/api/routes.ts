@@ -1,5 +1,5 @@
 import nba from "nba-api-client";
-import { StatCategory } from "../../features/types";
+import { StatCat } from "../../features/types";
 
 export const routes = {
   team: {
@@ -17,7 +17,7 @@ export const routes = {
       Scope: string = "S",
       Season: string = "2023-24",
       SeasonType: string = "Regular+Season",
-      StatCategory: string = "PTS"
+      StatCategory: StatCat = StatCat.PTS
     ) =>
       `/api/nba-league-leaders-route?LeagueID=${LeagueID}&PerMode=${PerMode}&Scope=${Scope}&Season=${Season}&SeasonType=${SeasonType}&StatCategory=${StatCategory}`,
   },

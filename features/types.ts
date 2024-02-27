@@ -1,4 +1,4 @@
-export enum StatCategory {
+export enum StatCat {
   AST = "AST",
   BLK = "BLK",
   DREB = "DREB",

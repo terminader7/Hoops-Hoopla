@@ -1,12 +1,12 @@
 import { routes } from "../../pages/api/routes";
-import { StatCategory } from "../types";
+import { StatCat } from "../types";
 
 export const fetchLeagueLeaders = async (
   PerMode?: string,
   Scope?: string,
   Season?: string,
   SeasonType?: string,
-  StatCategory?: string
+  StatCategory?: StatCat
 ) => {
   try {
     const LeagueID = "00";
