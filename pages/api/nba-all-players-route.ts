@@ -14,7 +14,7 @@ export default async function handler(
       IsOnlyCurrentSeason: "0",
       LeagueID: "00",
       playerList: "",
-      Season: "2018-19",
+      Season: "2023-24",
     });
 
     res.status(200).json(allPlayersList);
