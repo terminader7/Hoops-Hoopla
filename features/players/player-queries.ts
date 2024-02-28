@@ -1,33 +1,6 @@
 import { routes } from "../../pages/api/routes";
 import { StatCat } from "../types";
 
-// export const fetchLeagueLeaders = async (
-//   PerMode?: string,
-//   Scope?: string,
-//   Season?: string,
-//   SeasonType?: string,
-//   StatCategory?: StatCat
-// ) => {
-//   try {
-//     const LeagueID = "00";
-//     const req = await fetch(
-//       routes.players.leagueLeaders(
-//         LeagueID,
-//         PerMode,
-//         Scope,
-//         Season,
-//         SeasonType,
-//         StatCategory
-//       )
-//     );
-//     const res = await req.json();
-//     return res;
-//   } catch (error) {
-//     console.error("Error fetching league leaders:", error);
-//     return null;
-//   }
-// };
-
 export const fetchLeagueLeaders = async ({
   LeagueID = "00",
   PerMode = "PerGame",

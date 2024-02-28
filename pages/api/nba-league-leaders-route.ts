@@ -11,7 +11,7 @@ export default async function handler(
       LeagueID = "00",
       PerMode = "PerGame",
       Scope = "S",
-      Season = "2022-23",
+      Season = "2023-24",
       SeasonType = "Regular+Season",
       StatCategory = StatCat.PTS,
     } = req.query;
