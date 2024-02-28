@@ -13,7 +13,7 @@ import InlineContainer from "../components/InlineContainer";
 import { Global } from "@emotion/react";
 import Link from "../components/Link";
 import { NavBar, NavItem } from "../features/layout/Navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import getThemeOptions from "../config/theme";
 import BasketballIcon from "@mui/icons-material/SportsBasketball";
 import MenuIcon from "@mui/icons-material/MenuRounded";
@@ -73,15 +73,15 @@ const Homepage = () => {
   const [showPerGame, setShowPerGame] = useState(true);
 
   const top5PerGameGridItems = [
-    "Points Per Game",
-    "Assists Per Game",
-    "Rebounds Per Game",
-    "Steals Per Game",
-    "Blocks Per Game",
-    "Field Goal %",
-    "3PM Per Game",
-    "Three Point %",
-    "Minutes Per Game",
+    { title: "Points Per Game", stat: StatCat.PTS },
+    { title: "Assists Per Game", stat: StatCat.AST },
+    { title: "Rebounds Per Game", stat: StatCat.REB },
+    { title: "Steals Per Game", stat: StatCat.STL },
+    { title: "Blocks Per Game", stat: StatCat.BLK },
+    { title: "Field Goal %", stat: StatCat.FG_PCT },
+    { title: "3PM Per Game", stat: StatCat.FG3M },
+    { title: "Three Point %", stat: StatCat.FG3PCT },
+    { title: "Minutes Per Game", stat: StatCat.MIN },
   ];
 
   const top5TotalsGridItems = [
@@ -96,7 +96,7 @@ const Homepage = () => {
     "Games Played",
   ];
 
-  const statsGridItem = (item, index) => (
+  const StatsGridItem = (item, index) => (
     <Grid item xs={12} md={4} key={index}>
       <Typography
         variant="body1"
@@ -105,18 +105,24 @@ const Homepage = () => {
         noWrap
         overflow="visible"
       >
-        {item}
+        {item.title}
+      </Typography>
+      <Typography
+        variant="body1"
+        fontWeight={600}
+        textAlign="center"
+        noWrap
+        overflow="visible"
+      >
+        {item.stat}
       </Typography>
     </Grid>
   );
 
-  fetchLeagueLeaders().then((res) => {
-    console.log(res);
-  });
-
-  const assistLeaders = fetchLeagueLeaders({
-    StatCategory: StatCat.AST,
-  });
+  const fetchLeagueLeadersForStat = async (stat: StatCat) => {
+    const leagueLeaders = await fetchLeagueLeaders({ StatCategory: stat });
+    console.log(leagueLeaders);
+  };
 
   return (
     <>
@@ -213,13 +219,13 @@ const Homepage = () => {
                   justifyContent: "center",
                 }}
               >
-                {showPerGame
-                  ? top5PerGameGridItems.map((item, index) =>
+                {/* {showPerGame
+                  ? top5PerGameGridItemTitles.map((item, index) =>
                       statsGridItem(item, index)
                     )
                   : top5TotalsGridItems.map((item, index) =>
                       statsGridItem(item, index)
-                    )}
+                    )} */}
               </Grid>
             </Box>
             <Box
