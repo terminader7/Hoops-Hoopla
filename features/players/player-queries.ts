@@ -1,9 +1,9 @@
 import { routes } from "../../pages/api/routes";
-import { Mode, StatCat } from "../types";
+import { StatPerMode, StatCat } from "../types";
 
 export const fetchLeagueLeaders = async ({
   LeagueID = "00",
-  PerMode = Mode.PER_GAME,
+  PerMode = StatPerMode.PER_GAME,
   Scope = "S",
   Season = "2023-24",
   SeasonType = "Regular+Season",

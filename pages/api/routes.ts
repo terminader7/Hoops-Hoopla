@@ -1,4 +1,4 @@
-import { StatCat, Mode } from "../../features/types";
+import { StatCat, StatPerMode } from "../../features/types";
 
 export const routes = {
   team: {
@@ -12,7 +12,7 @@ export const routes = {
       `/api/nba-all-players-route?playerSeason=${playerSeason}`,
     leagueLeaders: (
       LeagueID: string,
-      PerMode: Mode,
+      PerMode: StatPerMode,
       Scope: string,
       Season: string,
       SeasonType: string,
