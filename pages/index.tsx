@@ -19,7 +19,7 @@ import BasketballIcon from "@mui/icons-material/SportsBasketball";
 import MenuIcon from "@mui/icons-material/MenuRounded";
 import GlobalSearch from "../features/layout/GlobalSearch";
 import { fetchLeagueLeaders } from "../features/players/player-queries";
-import { StatCat } from "../features/types";
+import { Mode, StatCat } from "../features/types";
 
 // Provide top 5 leaders in each statistical category, clicking on cat name will take player to players page with filter preselected
 
@@ -73,15 +73,15 @@ const Homepage = () => {
   const [showPerGame, setShowPerGame] = useState(true);
 
   const top5PerGameGridItems = [
-    { title: "Points Per Game", stat: StatCat.PTS },
-    { title: "Assists Per Game", stat: StatCat.AST },
-    { title: "Rebounds Per Game", stat: StatCat.REB },
-    { title: "Steals Per Game", stat: StatCat.STL },
-    { title: "Blocks Per Game", stat: StatCat.BLK },
-    { title: "Field Goal %", stat: StatCat.FG_PCT },
-    { title: "3PM Per Game", stat: StatCat.FG3M },
-    { title: "Three Point %", stat: StatCat.FG3PCT },
-    { title: "Minutes Per Game", stat: StatCat.MIN },
+    { title: "Points Per Game", stat: StatCat.PTS, mode: Mode.PER_GAME },
+    { title: "Assists Per Game", stat: StatCat.AST, mode: Mode.PER_GAME },
+    { title: "Rebounds Per Game", stat: StatCat.REB, mode: Mode.PER_GAME },
+    { title: "Steals Per Game", stat: StatCat.STL, mode: Mode.PER_GAME },
+    { title: "Blocks Per Game", stat: StatCat.BLK, mode: Mode.PER_GAME },
+    { title: "Field Goal %", stat: StatCat.FG_PCT, mode: Mode.TOTALS },
+    { title: "3PM Per Game", stat: StatCat.FG3M, mode: Mode.PER_GAME },
+    { title: "Three Point %", stat: StatCat.FG3_PCT, mode: Mode.TOTALS },
+    { title: "Minutes Per Game", stat: StatCat.MIN, mode: Mode.PER_GAME },
   ];
 
   const top5TotalsGridItems = [
@@ -119,10 +119,25 @@ const Homepage = () => {
     </Grid>
   );
 
-  const fetchLeagueLeadersForStat = async (stat: StatCat) => {
-    const leagueLeaders = await fetchLeagueLeaders({ StatCategory: stat });
-    console.log(leagueLeaders);
+  const fetchLeagueLeadersForStat = async (stat: StatCat, mode: Mode) => {
+    const leaders = await fetchLeagueLeaders({
+      PerMode: mode,
+      StatCategory: stat,
+    });
+    return leaders;
   };
+
+  useEffect(() => {
+    const fetchLeaders = async () => {
+      const leaders = await Promise.all(
+        top5PerGameGridItems.map((item) =>
+          fetchLeagueLeadersForStat(item.stat, item.mode)
+        )
+      );
+      console.log(leaders);
+    };
+    fetchLeaders();
+  }, []);
 
   return (
     <>

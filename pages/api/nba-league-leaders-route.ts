@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import nba from "nba-api-client";
-import { StatCat } from "../../features/types";
+import { StatCat, Mode } from "../../features/types";
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,7 +9,7 @@ export default async function handler(
   try {
     const {
       LeagueID = "00",
-      PerMode = "PerGame",
+      PerMode = Mode.PER_GAME,
       Scope = "S",
       Season = "2023-24",
       SeasonType = "Regular+Season",
