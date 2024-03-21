@@ -1,7 +1,6 @@
 import { Box, Typography, styled } from "@mui/material";
 import { useRouter } from "next/router";
 import InlineContainer from "../../components/InlineContainer";
-import { useTheme } from "@mui/material/styles";
 
 const NavBarContainer = styled(InlineContainer)(
   ({ theme }) => `
@@ -14,9 +13,13 @@ const NavBarContainer = styled(InlineContainer)(
 `
 );
 
-const NavItemContainer = styled(Box)(
-  ({ theme }) => `
+const NavItemContainer = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "isActive",
+})<{ isActive?: boolean }>(
+  ({ theme, isActive }) => `
 	padding: .5rem 1rem;
+  background: ${isActive ? theme.palette.secondary.dark : "transparent"};
+  color: ${isActive ? theme.palette.common.white : theme.palette.common.black};
 	&:hover {
     cursor: pointer;
 		background: ${theme.palette.secondary.dark};
@@ -26,13 +29,16 @@ const NavItemContainer = styled(Box)(
 `
 );
 
-export const NavItem = ({ text, href }) => {
+export const NavItem = ({ text, href }: { text: string; href: string }) => {
   const router = useRouter();
+  const isActive = router.pathname === href;
+  console.log({ isActive });
   return (
     <NavItemContainer
       onClick={() => {
         router.push(href);
       }}
+      isActive={isActive}
     >
       <Typography variant="body2" fontWeight={600}>
         {text}
@@ -42,15 +48,20 @@ export const NavItem = ({ text, href }) => {
 };
 
 export const NavBar = () => {
-  const theme = useTheme();
+  const NavItemArr = [
+    { text: "Compare", href: "/" },
+    { text: "Stats", href: "/stats" },
+    { text: "Players", href: "/players" },
+    { text: "Teams", href: "/teams" },
+    { text: "Leaders", href: "/leaders" },
+  ];
+
   return (
     <NavBarContainer>
       <InlineContainer>
-        <NavItem text="Stats Home" href={"/"} />
-        <NavItem text="Players" href={"/players"} />
-        <NavItem text="Teams" href={"/teams"} />
-        <NavItem text="Leaders" href={"/leaders"} />
-        <NavItem text="Compare" href={"/compare"} />
+        {NavItemArr.map((item, index) => (
+          <NavItem key={index} text={item.text} href={item.href} />
+        ))}
       </InlineContainer>
       <InlineContainer>
         <NavItem text="Settings" href={"/settings"} />
