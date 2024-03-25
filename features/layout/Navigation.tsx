@@ -1,6 +1,7 @@
-import { Box, Typography, styled } from "@mui/material";
+import { Box, Tooltip, Typography, styled } from "@mui/material";
 import { useRouter } from "next/router";
 import InlineContainer from "../../components/InlineContainer";
+import LockIcon from "@mui/icons-material/LockRounded";
 
 const NavBarContainer = styled(InlineContainer)(
   ({ theme }) => `
@@ -32,8 +33,7 @@ const NavItemContainer = styled(Box, {
 export const NavItem = ({ text, href }: { text: string; href: string }) => {
   const router = useRouter();
   const isActive = router.pathname === href;
-  console.log({ isActive });
-  return (
+  return text === "Compare" ? (
     <NavItemContainer
       onClick={() => {
         router.push(href);
@@ -44,6 +44,15 @@ export const NavItem = ({ text, href }: { text: string; href: string }) => {
         {text}
       </Typography>
     </NavItemContainer>
+  ) : (
+    <Tooltip title="Coming Soon" arrow>
+      <Box sx={{ padding: ".5rem 1rem", display: "flex", cursor: "pointer" }}>
+        <Typography variant="body2" fontWeight={600} sx={{ opacity: 0.4 }}>
+          {text}
+        </Typography>
+        <LockIcon fontSize="small" sx={{ opacity: 0.4 }} />
+      </Box>
+    </Tooltip>
   );
 };
 
