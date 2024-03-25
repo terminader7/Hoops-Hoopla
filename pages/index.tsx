@@ -15,6 +15,8 @@ import { NavBar, NavItem } from "../features/layout/Navigation";
 import BasketballIcon from "@mui/icons-material/SportsBasketball";
 import MenuIcon from "@mui/icons-material/MenuRounded";
 import GlobalSearch from "../features/layout/GlobalSearch";
+import SearchField from "../components/SearchField";
+import { useState } from "react";
 
 const Wrapper = styled(Box)(
   ({ theme }) => `
@@ -43,6 +45,7 @@ const HomePageContainer = styled(Box)(
 const Homepage = () => {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
+  const [isSearchingPlayer, setIsSearchingPlayer] = useState(true);
 
   return (
     <>
@@ -83,9 +86,7 @@ const Homepage = () => {
                 Hoops Hoopla
               </Typography>
             </InlineContainer>
-            {/* {isDesktop ? (
-              <GlobalSearch />
-            ) : (
+            {/* {!isDesktop && (
               <InlineContainer>
                 <MenuIcon sx={{ fontSize: "large" }} />
                 <Typography variant="body1" fontWeight={600}>
@@ -93,6 +94,9 @@ const Homepage = () => {
                 </Typography>
               </InlineContainer>
             )} */}
+            <Typography variant="body1" fontWeight="bold">
+              A place for settling basketball debates
+            </Typography>
           </InlineContainer>
           {isDesktop && <NavBar />}
           <InlineContainer
@@ -102,7 +106,14 @@ const Homepage = () => {
               padding: "1rem 2rem",
               flexDirection: { xs: "column", md: "row" },
             }}
-          ></InlineContainer>
+          >
+            <Box>
+              <Typography variant="h5" fontWeight={600}>
+                {isSearchingPlayer ? "Player 1" : "Team 1"}
+              </Typography>
+              <SearchField isSearchingPlayer={isSearchingPlayer} />
+            </Box>
+          </InlineContainer>
         </HomePageContainer>
       </Wrapper>
     </>
