@@ -83,7 +83,7 @@ const Homepage = () => {
                 Hoops Hoopla
               </Typography>
             </InlineContainer>
-            {isDesktop ? (
+            {/* {isDesktop ? (
               <GlobalSearch />
             ) : (
               <InlineContainer>
@@ -92,7 +92,7 @@ const Homepage = () => {
                   MENU
                 </Typography>
               </InlineContainer>
-            )}
+            )} */}
           </InlineContainer>
           {isDesktop && <NavBar />}
           <InlineContainer
