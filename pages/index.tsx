@@ -153,7 +153,7 @@ const Homepage = () => {
                           Player vs. Player
                         </Typography>
                         <Typography variant="body2">
-                          Head-to-Head, or do multi-player comparions
+                          Head-to-Head, or multi-player comparisons
                         </Typography>
                       </Box>
                     }
