@@ -22,6 +22,7 @@ import SearchField from "../components/SearchField";
 import { useState } from "react";
 import RadioBox from "../components/RadioBox";
 import { ComparisonMode } from "../features/types";
+import PlayerComparisonGrid from "../components/PlayerComparisonGrid";
 
 const Wrapper = styled(Box)(
   ({ theme }) => `
@@ -193,95 +194,12 @@ const Homepage = () => {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "1rem",
               }}
             >
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".5rem",
-                    }}
-                  >
-                    <Box>
-                      <Typography variant="h6" fontWeight={600}>
-                        {isComparingPlayers ? "Player 1" : "Team 1"}
-                      </Typography>
-                      <Typography variant="body1">
-                        {isComparingPlayers
-                          ? "Type a player's name then select an option"
-                          : "Search for a team"}
-                      </Typography>
-                    </Box>
-                    <SearchField isSearchingPlayer={isComparingPlayers} />
-                  </Box>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".5rem",
-                    }}
-                  >
-                    <Box>
-                      <Typography variant="h6" fontWeight={600}>
-                        {isComparingPlayers ? "Player 1" : "Team 1"}
-                      </Typography>
-                      <Typography variant="body1">
-                        {isComparingPlayers
-                          ? "Type a player's name then select an option"
-                          : "Search for a team"}
-                      </Typography>
-                    </Box>
-                    <SearchField isSearchingPlayer={isComparingPlayers} />
-                  </Box>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".5rem",
-                    }}
-                  >
-                    <Box>
-                      <Typography variant="h6" fontWeight={600}>
-                        {isComparingPlayers ? "Player 1" : "Team 1"}
-                      </Typography>
-                      <Typography variant="body1">
-                        {isComparingPlayers
-                          ? "Type a player's name then select an option"
-                          : "Search for a team"}
-                      </Typography>
-                    </Box>
-                    <SearchField isSearchingPlayer={isComparingPlayers} />
-                  </Box>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: ".5rem",
-                    }}
-                  >
-                    <Box>
-                      <Typography variant="h6" fontWeight={600}>
-                        {isComparingPlayers ? "Player 1" : "Team 1"}
-                      </Typography>
-                      <Typography variant="body1">
-                        {isComparingPlayers
-                          ? "Type a player's name then select an option"
-                          : "Search for a team"}
-                      </Typography>
-                    </Box>
-                    <SearchField isSearchingPlayer={isComparingPlayers} />
-                  </Box>
-                </Grid>
-              </Grid>
+              <PlayerComparisonGrid
+                isComparingPlayers={isComparingPlayers}
+                numItems={4}
+              />
             </Box>
           </InlineContainer>
         </HomePageContainer>
