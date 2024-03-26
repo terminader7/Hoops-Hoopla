@@ -1,7 +1,10 @@
 import Head from "next/head";
 import {
   Box,
+  FormControlLabel,
   Grid,
+  Radio,
+  RadioGroup,
   TextField,
   Typography,
   createTheme,
@@ -17,6 +20,8 @@ import MenuIcon from "@mui/icons-material/MenuRounded";
 import GlobalSearch from "../features/layout/GlobalSearch";
 import SearchField from "../components/SearchField";
 import { useState } from "react";
+import RadioBox from "../components/RadioBox";
+import { ComparisonMode } from "../features/types";
 
 const Wrapper = styled(Box)(
   ({ theme }) => `
@@ -45,7 +50,9 @@ const HomePageContainer = styled(Box)(
 const Homepage = () => {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
-  const [isSearchingPlayer, setIsSearchingPlayer] = useState(true);
+  const [comparisonMode, setComparisonMode] = useState(
+    ComparisonMode.PLAYER_VS_PLAYER
+  );
 
   return (
     <>
@@ -101,17 +108,97 @@ const Homepage = () => {
           {isDesktop && <NavBar />}
           <InlineContainer
             sx={{
-              justifyContent: "space-between",
+              justifyContent: "center",
               alignItems: "center",
               padding: "1rem 2rem",
-              flexDirection: { xs: "column", md: "row" },
+              flexDirection: "column",
             }}
           >
+            <InlineContainer>
+              <RadioGroup
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "1rem",
+                  padding: "1rem",
+                  justifyContent: "center",
+                }}
+              >
+                <RadioBox
+                  active={comparisonMode === ComparisonMode.PLAYER_VS_PLAYER}
+                  onClick={() =>
+                    setComparisonMode(ComparisonMode.PLAYER_VS_PLAYER)
+                  }
+                >
+                  <FormControlLabel
+                    value={ComparisonMode.PLAYER_VS_PLAYER}
+                    onChange={() =>
+                      setComparisonMode(ComparisonMode.PLAYER_VS_PLAYER)
+                    }
+                    control={
+                      <Radio
+                        size="small"
+                        checked={
+                          comparisonMode === ComparisonMode.PLAYER_VS_PLAYER
+                        }
+                        sx={{ position: "relative", top: -20 }}
+                      />
+                    }
+                    disableTypography
+                    label={
+                      <Box>
+                        <Typography variant="body1" fontWeight={600} noWrap>
+                          Player vs. Player
+                        </Typography>
+                        <Typography variant="body2">
+                          Head-to-Head, or do multi-player comparions
+                        </Typography>
+                      </Box>
+                    }
+                  />
+                </RadioBox>
+                <RadioBox
+                  active={comparisonMode === ComparisonMode.TEAM_VS_TEAM}
+                  onClick={() => setComparisonMode(ComparisonMode.TEAM_VS_TEAM)}
+                >
+                  <FormControlLabel
+                    value={ComparisonMode.TEAM_VS_TEAM}
+                    onChange={() =>
+                      setComparisonMode(ComparisonMode.TEAM_VS_TEAM)
+                    }
+                    control={
+                      <Radio
+                        size="small"
+                        checked={comparisonMode === ComparisonMode.TEAM_VS_TEAM}
+                        sx={{ position: "relative", top: -20 }}
+                      />
+                    }
+                    disableTypography
+                    label={
+                      <Box>
+                        <Typography variant="body1" fontWeight={600} noWrap>
+                          Team vs. Team
+                        </Typography>
+                        <Typography variant="body2">
+                          Compare two teams against each other
+                        </Typography>
+                      </Box>
+                    }
+                  />
+                </RadioBox>
+              </RadioGroup>
+            </InlineContainer>
             <Box>
               <Typography variant="h5" fontWeight={600}>
-                {isSearchingPlayer ? "Player 1" : "Team 1"}
+                {comparisonMode === ComparisonMode.PLAYER_VS_PLAYER
+                  ? "Player 1"
+                  : "Team 1"}
               </Typography>
-              <SearchField isSearchingPlayer={isSearchingPlayer} />
+              <SearchField
+                isSearchingPlayer={
+                  comparisonMode === ComparisonMode.PLAYER_VS_PLAYER
+                }
+              />
             </Box>
           </InlineContainer>
         </HomePageContainer>

@@ -34,3 +34,8 @@ export enum StatPerMode {
   PER_POSSESSION = "PerPossession",
   TOTALS = "Totals",
 }
+
+export enum ComparisonMode {
+  PLAYER_VS_PLAYER = "PlayerVsPlayer",
+  TEAM_VS_TEAM = "TeamVsTeam",
+}
