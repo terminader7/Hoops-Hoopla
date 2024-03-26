@@ -9,6 +9,8 @@ const SearchField = ({ isSearchingPlayer }: { isSearchingPlayer: boolean }) => {
           label="Search for a player"
           variant="outlined"
           size="small"
+          sx={{ maxWidth: "400px" }}
+          fullWidth
         />
       ) : (
         <TextField label="Search for a team" variant="outlined" size="small" />

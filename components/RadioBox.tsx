@@ -23,7 +23,7 @@ const RadioBox = styled(Box, {
           ? theme.palette.primary.main
           : theme.palette.grey[400]
       };
-      height: 75px;
+      height: 80px;
       flex: 1 1 100px;
       width: 300px;
       transition: all 0.3s;

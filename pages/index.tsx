@@ -54,6 +54,9 @@ const Homepage = () => {
     ComparisonMode.PLAYER_VS_PLAYER
   );
 
+  const isComparingPlayers = comparisonMode === ComparisonMode.PLAYER_VS_PLAYER;
+  const isComparingTeams = comparisonMode === ComparisonMode.TEAM_VS_TEAM;
+
   return (
     <>
       <Head>
@@ -125,7 +128,7 @@ const Homepage = () => {
                 }}
               >
                 <RadioBox
-                  active={comparisonMode === ComparisonMode.PLAYER_VS_PLAYER}
+                  active={isComparingPlayers}
                   onClick={() =>
                     setComparisonMode(ComparisonMode.PLAYER_VS_PLAYER)
                   }
@@ -138,9 +141,7 @@ const Homepage = () => {
                     control={
                       <Radio
                         size="small"
-                        checked={
-                          comparisonMode === ComparisonMode.PLAYER_VS_PLAYER
-                        }
+                        checked={isComparingPlayers}
                         sx={{ position: "relative", top: -20 }}
                       />
                     }
@@ -158,7 +159,7 @@ const Homepage = () => {
                   />
                 </RadioBox>
                 <RadioBox
-                  active={comparisonMode === ComparisonMode.TEAM_VS_TEAM}
+                  active={isComparingTeams}
                   onClick={() => setComparisonMode(ComparisonMode.TEAM_VS_TEAM)}
                 >
                   <FormControlLabel
@@ -169,7 +170,7 @@ const Homepage = () => {
                     control={
                       <Radio
                         size="small"
-                        checked={comparisonMode === ComparisonMode.TEAM_VS_TEAM}
+                        checked={isComparingTeams}
                         sx={{ position: "relative", top: -20 }}
                       />
                     }
@@ -180,7 +181,7 @@ const Homepage = () => {
                           Team vs. Team
                         </Typography>
                         <Typography variant="body2">
-                          Compare two teams against each other
+                          Compare two teams Head-to-Head
                         </Typography>
                       </Box>
                     }
@@ -188,17 +189,99 @@ const Homepage = () => {
                 </RadioBox>
               </RadioGroup>
             </InlineContainer>
-            <Box>
-              <Typography variant="h5" fontWeight={600}>
-                {comparisonMode === ComparisonMode.PLAYER_VS_PLAYER
-                  ? "Player 1"
-                  : "Team 1"}
-              </Typography>
-              <SearchField
-                isSearchingPlayer={
-                  comparisonMode === ComparisonMode.PLAYER_VS_PLAYER
-                }
-              />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
+              }}
+            >
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: ".5rem",
+                    }}
+                  >
+                    <Box>
+                      <Typography variant="h6" fontWeight={600}>
+                        {isComparingPlayers ? "Player 1" : "Team 1"}
+                      </Typography>
+                      <Typography variant="body1">
+                        {isComparingPlayers
+                          ? "Type a player's name then select an option"
+                          : "Search for a team"}
+                      </Typography>
+                    </Box>
+                    <SearchField isSearchingPlayer={isComparingPlayers} />
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: ".5rem",
+                    }}
+                  >
+                    <Box>
+                      <Typography variant="h6" fontWeight={600}>
+                        {isComparingPlayers ? "Player 1" : "Team 1"}
+                      </Typography>
+                      <Typography variant="body1">
+                        {isComparingPlayers
+                          ? "Type a player's name then select an option"
+                          : "Search for a team"}
+                      </Typography>
+                    </Box>
+                    <SearchField isSearchingPlayer={isComparingPlayers} />
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: ".5rem",
+                    }}
+                  >
+                    <Box>
+                      <Typography variant="h6" fontWeight={600}>
+                        {isComparingPlayers ? "Player 1" : "Team 1"}
+                      </Typography>
+                      <Typography variant="body1">
+                        {isComparingPlayers
+                          ? "Type a player's name then select an option"
+                          : "Search for a team"}
+                      </Typography>
+                    </Box>
+                    <SearchField isSearchingPlayer={isComparingPlayers} />
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: ".5rem",
+                    }}
+                  >
+                    <Box>
+                      <Typography variant="h6" fontWeight={600}>
+                        {isComparingPlayers ? "Player 1" : "Team 1"}
+                      </Typography>
+                      <Typography variant="body1">
+                        {isComparingPlayers
+                          ? "Type a player's name then select an option"
+                          : "Search for a team"}
+                      </Typography>
+                    </Box>
+                    <SearchField isSearchingPlayer={isComparingPlayers} />
+                  </Box>
+                </Grid>
+              </Grid>
             </Box>
           </InlineContainer>
         </HomePageContainer>
